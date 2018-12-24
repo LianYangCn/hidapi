@@ -810,6 +810,7 @@ void HID_API_EXPORT HID_API_CALL hid_close(hid_device *dev)
 {
 	if (!dev)
 		return;
+	SetEvent(dev->ol.hEvent);
 	CancelIo(dev->device_handle);
 	free_hid_device(dev);
 }
